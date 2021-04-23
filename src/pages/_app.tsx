@@ -1,7 +1,7 @@
-import '../../styles/globals.scss';
-import styles from '../../styles/app.module.scss'
 import Header from '../../src/components/Header';
 import Player from '../../src/components/Player';
+import styles from '../../styles/app.module.scss';
+import '../../styles/globals.scss';
 
 function MyApp({Component,pageProps}){
   return (
