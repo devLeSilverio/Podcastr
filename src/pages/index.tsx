@@ -2,7 +2,20 @@
 //SSR --> recarrega toda vez que a cessar a home da aplicação , mas se ela na sofre alteração, nao tem porque ir na api e buscra os episodios
 //SSG --> asssim que entra na pag, a aplicacao que noa muda fica estatica  
 
-export default function Home(props) {
+import { GetStaticProps } from "next"
+import api from "../../services/api"
+
+type Episode = {
+  id:string;
+  title:string;
+  members:string;
+}
+
+type HomeProps = {
+  episodes: Episode[];
+}
+
+export default function Home(props : HomeProps) {
   return (
     <div>
       <h1>Index</h1>
@@ -11,9 +24,14 @@ export default function Home(props) {
   )
 }
 
-export async function getStaticProps(){
-  const response = await fetch('http://localhost:3333/episodes')
-  const data = await response.json()
+export  const getStaticProps: GetStaticProps = async () => { 
+  const {data} = await api.get('episodes',{
+    params:{
+      _limit:12,
+      _sort:'published_at',
+      _order:'desc'
+    }
+  })
 
   return {
     props:{
