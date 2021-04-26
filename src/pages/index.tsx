@@ -1,29 +1,68 @@
  // SPA --> useEffect(()=>{}, []) o array vazio faz o useEffecct ser disparado uma unica vez assim que o componente for exibido em tela 
 //SSR --> recarrega toda vez que a cessar a home da aplicação , mas se ela na sofre alteração, nao tem porque ir na api e buscra os episodios
 //SSG --> asssim que entra na pag, a aplicacao que noa muda fica estatica  
+//key --> para nao criar tudo do zero
 
 import { format, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 import { GetStaticProps } from "next"
+import Image from 'next/image'
 import api from "../../services/api"
 import convertDurationToTimeString from '../utils/convertDurationToTimeString'
+import styles from './home.module.scss'
+
 
 type Episode = {
   id:string;
   title:string;
+  thumbnail:string;
   members:string;
   published_at:string;
+  duration:number;
+  durationAsString:string;
+  url:string;
+  publishedAt:string;
 }
 
 type HomeProps = {
-  episodes: Episode[];
+  latestEpisodes:Episode[]
+  allEpisodes: Episode[];
 }
 
-export default function Home(props : HomeProps) {
+export default function Home({latestEpisodes,allEpisodes} : HomeProps) {
   return (
-    <div>
-      <h1>Index</h1>
-      <p>{JSON.stringify(props.episodes)}</p>  
+    <div className={styles.homepage}>
+      <section className={styles.latestEpisodes}>
+        <h2>Últimos Lançamentos</h2>
+
+        <ul>
+          {latestEpisodes.map((episode, index) => (
+            <li key={episode.id}>
+              <Image 
+                width={192}
+                height={192}
+                src={episode.thumbnail} 
+                alt={episode.title}
+                objectFit="cover"
+              />
+
+              <div className={styles.episodeDetails}>
+                <a href="">{episode.title}</a>
+                <p>{episode.members}</p>
+                <span>{episode.publishedAt}</span>
+                <span>{episode.durationAsString}</span>
+              </div>
+
+              <button type="button">
+                  <img src="/play-green.svg" alt="Tocar Episódio"/>
+                </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className={styles.allEpisodes}>
+        
+        </section>
     </div>
   )
 }
@@ -50,9 +89,13 @@ export  const getStaticProps: GetStaticProps = async () => {
     };
   })
 
+  const latestEpisodes = episodes.slice(0,2);
+  const allEpisodes = episodes.slice(2,episodes.length);
+
   return {
     props: {
-      episodes,
+      latestEpisodes,
+      allEpisodes,
     },
     revalidate: 60*60*8,
   }
