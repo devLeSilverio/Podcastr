@@ -5,7 +5,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/router';
-import api from "../../../services/api";
+import { api } from "../../../services/api";
 import { usePlayer } from "../../contexts/PlayerContext";
 import convertDurationToTimeString from "../../utils/convertDurationToTimeString";
 import styles from './episode.module.scss';

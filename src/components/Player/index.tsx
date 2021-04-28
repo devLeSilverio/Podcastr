@@ -6,9 +6,6 @@ import { usePlayer } from '../../contexts/PlayerContext'
 import convertDurationToTimeString from '../../utils/convertDurationToTimeString'
 import styles from './styles.module.scss'
 
-
-
-
 export function Player() {
   const audioRef = useRef<HTMLAudioElement>(null)
   const [progress, setProgress] = useState(0)
