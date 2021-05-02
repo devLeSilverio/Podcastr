@@ -1,4 +1,5 @@
 {
+
   "episodes": [
       {
           "id": "a-importancia-da-contribuicao-em-open-source",
@@ -37,19 +38,6 @@
               "url": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-podcastr/audios/microservicos.m4a",
               "type": "audio/x-m4a",
               "duration": 5506
-          }
-      },
-      {
-          "id": "aplicacao-de-arquiteturas-mvc-e-clean-architecture-na-pratica",
-          "title": "Faladev #27 | Aplicação de arquiteturas MVC e CA na prática",
-          "members": "Dego Fernandes, Dani Leão, Otávio Lemos e Rodrigo Branas",
-          "published_at": "2020-12-18 14:00:00",
-          "thumbnail": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-podcastr/clean.jpg",
-          "description": "<p>Diego Fernandes e Daniele Evangelista receberam Otávio Lemos e Rodrigo Branas para bater um papo sobre arquiteturas modernas de desenvolvimento, aplicadas na indústria da tecnologia.</p><p>Quais são os fundamentos, os princípios e a importância de debater arquiteturas neste ecossistema?</p>",
-          "file": {
-              "url": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-podcastr/audios/clean.m4a",
-              "type": "audio/x-m4a",
-              "duration": 5044
           }
       },
       {
