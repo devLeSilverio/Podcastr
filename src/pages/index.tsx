@@ -4,8 +4,8 @@ import { GetServerSideProps } from "next"
 import Head from "next/head"
 import Image from 'next/image'
 import Link from 'next/link'
-import api from "../../services/api"
 import { usePlayer } from "../contexts/PlayerContext"
+import api from "../services/api"
 import convertDurationToTimeString from "../utils/convertDurationToTimeString"
 import styles from './home.module.scss'
 

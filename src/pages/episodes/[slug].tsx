@@ -5,8 +5,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/router';
-import { api } from "../../../services/api";
 import { usePlayer } from "../../contexts/PlayerContext";
+import { api } from "../../services/api";
 import convertDurationToTimeString from "../../utils/convertDurationToTimeString";
 import styles from './episode.module.scss';
 
@@ -31,7 +31,7 @@ export default function Episode({ episode }: EpisodeProps ) {
   const { play } = usePlayer()
   const router = useRouter()
 
-  if (router.isFallback) {
+  if (router.isFallback) { //carregando
     return <p>Carregando...</p>
   }
 
@@ -93,7 +93,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: 'blocking'
+    fallback: 'blocking' // carregados no node js e nao no client
   }
 }
 
